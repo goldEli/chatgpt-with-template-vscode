@@ -2,6 +2,8 @@
 	"name": "chatgpt-with-template",
 	"displayName": "chatgpt-with-template",
 	"description": "chatgpt with template",
+	"publisher": "miaoyu",
+	"icon": "logo.png",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.85.0"
