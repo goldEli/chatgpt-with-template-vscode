@@ -75,6 +75,7 @@
 		"test": "vscode-test"
 	},
 	"devDependencies": {
+		"@types/fs-extra": "^11.0.4",
 		"@types/mocha": "^10.0.6",
 		"@types/node": "18.x",
 		"@types/vscode": "^1.85.0",
@@ -92,6 +93,7 @@
 		"@types/copy-paste": "^1.1.33",
 		"@types/ejs": "^3.1.5",
 		"copy-paste": "^1.5.3",
-		"ejs": "^3.1.9"
+		"ejs": "^3.1.9",
+		"fs-extra": "^11.2.0"
 	}
 }
