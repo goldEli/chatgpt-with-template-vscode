@@ -14,20 +14,54 @@
   "contributes": {
     "commands": [
       {
-        "command": "chatgpt-with-template.helloWorld",
-        "title": "Hello World"
+        "command": "chatgpt-with-template.chatTemplate",
+        "title": "chatTemplate"
       }
     ],
-    "configuration":{
-      "title": "apiKey",
-      "properties": {
-        "chatgpt-with-template.apiKey": {
-          "type": "string",
-          "default": null,
-          "description": "OpenAI apiKey"
-        }
-      }
-    }
+    "configuration": {
+			"type": "object",
+			"title": "chatgpt-with-template",
+			"properties": {
+				"chatgpt-with-template.hostname": {
+					"type": "string",
+					"default": "api.openai.com",
+					"description": "chatGPT hostname"
+				},
+				"chatgpt-with-template.apiPath": {
+					"type": "string",
+					"default": "/v1/chat/completions",
+					"description": "chatGPT api path"
+				},
+				"chatgpt-with-template.apiKey": {
+					"type": "string",
+					"default": "",
+					"description": "chatGPT api key"
+				},
+				"chatgpt-with-template.model": {
+					"type": "string",
+					"default": "gpt-3.5-turbo",
+					"description": "chatGPT model"
+				},
+				"chatgpt-with-template.maxTokens": {
+					"type": "number",
+					"default": 2000,
+					"minimum": 100,
+					"markdownDescription": "chatGPT max tokens"
+				},
+				"chatgpt-with-template.temperature": {
+					"type": "number",
+					"default": 0.3,
+					"minimum": 0,
+					"maximum": 1,
+					"description": "chatGPT temperature"
+				},
+				"chatgpt-with-template.syncFolder": {
+					"type": "string",
+					"default": "",
+					"description": "sync folder"
+				}
+			}
+		}
   },
   "scripts": {
     "vscode:prepublish": "pnpm run package",
