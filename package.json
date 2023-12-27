@@ -17,7 +17,17 @@
         "command": "chatgpt-with-template.helloWorld",
         "title": "Hello World"
       }
-    ]
+    ],
+    "configuration":{
+      "title": "apiKey",
+      "properties": {
+        "chatgpt-with-template.apiKey": {
+          "type": "string",
+          "default": null,
+          "description": "OpenAI apiKey"
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "pnpm run package",
