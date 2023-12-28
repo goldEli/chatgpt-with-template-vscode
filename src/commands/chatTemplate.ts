@@ -21,6 +21,7 @@ import {
   showMessage,
 } from "../utils";
 import { getAnswerByGemini } from "../utils/gemini";
+import { insertTextAtCursor } from "../utils/insertTextAtCursor";
 
 const { window } = vscode;
 
@@ -54,24 +55,22 @@ export const chatTemplate = (context: vscode.ExtensionContext) => {
           await downloadGitHubCode(chatTemplateRepoUrl, chatTemplateDir);
           return;
         }
+        const p = path.resolve(
+          rootPath,
+          `./chatTemplate/${selectedOption?.label}/template.ejs`
+        );
+        const code = await compileEjsFile(p, {
+          rawSelectedText: selectedText,
+        });
+
+        showMessage(`You selected: ${selectedText}`);
+        showMessage(`Your prompt: ${code}`);
+        if (selectedOption?.label?.startsWith("insert")) {
+          pasteToEditor(code);
+          return;
+        }
 
         if (selectedOption?.label) {
-          const p = path.resolve(
-            rootPath,
-            `./chatTemplate/${selectedOption?.label}/template.ejs`
-          );
-          // const text = await readFileContent(p);
-          // if (!text) {
-          //   showErrorMessage("读取模板失败:" + p);
-          //   return;
-          // }
-          const code = await compileEjsFile(p, {
-            rawSelectedText: selectedText,
-          });
-
-          showMessage(`You selected: ${selectedText}`);
-          showMessage(`Your prompt: ${code}`);
-
           if (extensionConfig.ai === "openai") {
             const config = getChatGPTConfig();
             const res = await createChatCompletion({
