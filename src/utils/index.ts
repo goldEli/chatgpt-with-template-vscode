@@ -21,3 +21,11 @@ export const pasteToEditor = (content: string) => {
     builder.replace(editor.selection, content);
   });
 };
+
+export const showMessage = (message: string) => {
+  vscode.window.showInformationMessage(message);
+};
+
+export const showErrorMessage = (message: string) => {
+  vscode.window.showErrorMessage(message);
+};
